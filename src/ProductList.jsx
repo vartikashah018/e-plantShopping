@@ -1,41 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/ProductList.css'
+import './ProductList.css';
 import CartItem from './CartItem';
-import snakePlant from '../assets/snake-plant.jpg';
-import spiderPlant from '../assets/chlorophytum.jpg';
-import peaceLily from '../assets/peace-lilies.jpg';
-import bostonFern from '../assets/boston-fern.jpg';
-import rubberPlant from '../assets/Rubber-Plant.jpg';
-import AloeVera from '../assets/aloe-vera.jpg';
-import Lavender from '../assets/Lavender.avif';
-import Jasmine from '../assets/Jasmine.avif';
-import Rosemary from '../assets/rosemary.jpg';
-import Mint from '../assets/mint.jpg';
-import LemonBalm from "../assets/Lemon-balm.jpg";
-import Hyacinth from "../assets/hyacinth.jpg";
-import Oregano from "../assets/oregano.jpg";
-import Marigold from "../assets/marigold.jpg";
-import Geraniums from "../assets/geraniums.jpg";
-import Basil from "../assets/basil.jpg";
-import Catnip from "../assets/catnip.jpg";
-import Echinacea from "../assets/echinacea.jpg";
-import Peppermint from "../assets/peppermint.jpg";
-import Chamomile from "../assets/Chamomile.jpg";
-import Calendula from "../assets/Calendula.jpg";
-import ZZPlant from "../assets/ZZ-Plant.avif";
-import Pothos from "../assets/pothos.jpg";
-import castIronPlant from "../assets/cast-iron-plant.jpg";
-import Succulents from "../assets/succulents.jpg";
-import Aglaonema from "../assets/aglaonema.jpg";
-import { addItem } from '../store/CartSlice';
+const snakePlant = 'https://cdn.pixabay.com/photo/2021/01/22/06/04/snake-plant-5939187_1280.jpg';
+const spiderPlant = 'https://cdn.pixabay.com/photo/2018/07/11/06/47/chlorophytum-3530413_1280.jpg';
+const peaceLily = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80';
+const bostonFern = 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80';
+const rubberPlant = 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80';
+const AloeVera = 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80';
+const Lavender = 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80';
+const Jasmine = 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=400&q=80';
+const Rosemary = 'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80';
+const Mint = 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80';
+const LemonBalm = 'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80';
+const Hyacinth = 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80';
+const Oregano = 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80';
+const Marigold = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80';
+const Geraniums = 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80';
+const Basil = 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80';
+const Catnip = 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=400&q=80';
+const Echinacea = 'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80';
+const Peppermint = 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80';
+const Chamomile = 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80';
+const Calendula = 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80';
+const ZZPlant = 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80';
+const Pothos = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80';
+const castIronPlant = 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=400&q=80';
+const Succulents = 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80';
+const Aglaonema = 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80';
+import { addItem } from './CartSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
-
-
 
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
-    const [showPlants, setShowPlants] = useState(false);
+    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart, setAddedToCart] = useState({});
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.items);
@@ -291,14 +288,10 @@ function ProductList({ onHomeClick }) {
         e.preventDefault();
         setShowCart(false);
     };
-
+    // Handle Add to Cart
     const handleAddToCart = (plant) => {
         dispatch(addItem(plant));
-
-        setAddedToCart((prev) => ({
-            ...prev,
-            [plant.name]: (prev[plant.name] || 0) + 1
-        }));
+        setAddedToCart((prev) => ({ ...prev, [plant.name]: true }));
     };
 
     return (
@@ -314,33 +307,15 @@ function ProductList({ onHomeClick }) {
                             </div>
                         </a>
                     </div>
-
                 </div>
                 <div style={styleObjUl}>
                     <div> <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
-                    <div>
+                    <div style={{ position: 'relative' }}>
                         <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                             <h1 className='cart' style={{ position: 'relative' }}>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68">
-                                    <rect width="156" height="156" fill="none"></rect>
-                                    <circle cx="80" cy="216" r="12"></circle>
-                                    <circle cx="184" cy="216" r="12"></circle>
-                                    <path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" id="mainIconPathAttribute"></path>
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68"><rect width="156" height="156" fill="none"></rect><circle cx="80" cy="216" r="12"></circle><circle cx="184" cy="216" r="12"></circle><path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" id="mainIconPathAttribute"></path></svg>
                                 {cartCount > 0 && (
-                                    <span style={{
-                                        position: 'absolute',
-                                        top: 0,
-                                        right: 0,
-                                        background: 'red',
-                                        color: 'white',
-                                        borderRadius: '50%',
-                                        padding: '4px 8px',
-                                        fontSize: '18px',
-                                        fontWeight: 'bold'
-                                    }}>
-                                        {cartCount}
-                                    </span>
+                                    <span className="cart_quantity_count" style={{ position: 'absolute', top: 0, right: 0, color: 'white', background: '#e74c3c', borderRadius: '50%', width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, fontWeight: 'bold', transform: 'translate(40%,-40%)' }}>{cartCount}</span>
                                 )}
                             </h1>
                         </a>
@@ -349,28 +324,30 @@ function ProductList({ onHomeClick }) {
             </div>
             {!showCart ? (
                 <div className="product-grid">
-                    {plantsArray.map((category, index) => (
-                        <div key={index} className="product-category">
-                            <h2 className="category-title">{category.category}</h2>
+                    {plantsArray.map((categoryObj, catIdx) => (
+                        <div key={categoryObj.category + catIdx} style={{ width: '100%' }}>
+                            <div className="plant_heading">
+                                <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center', margin: '30px 0 20px 0', textShadow: '1px 1px 0 #fff' }}>{categoryObj.category}</h1>
+                            </div>
                             <div className="product-list">
-                                {category.plants.map((plant, plantIndex) => (
-                                    <div key={plantIndex} className="product-item">
+                                {categoryObj.plants.map((plant, idx) => (
+                                    <div className="product-card" key={plant.name + idx}>
+                                        <h3 style={{ fontWeight: 'bold', marginBottom: '10px' }}>{plant.name}</h3>
                                         <img src={plant.image} alt={plant.name} className="product-image" />
-                                        <h3 className="product-title">{plant.name}</h3>
-                                        <p className="product-description">{plant.description}</p>
-                                        <p className="product-cost">{plant.cost}</p>
+                                        <div style={{ color: '#e74c3c', fontSize: '1.2rem', margin: '10px 0' }}>{plant.cost}</div>
+                                        <p style={{ fontStyle: 'italic', color: '#444', minHeight: '40px' }}>{plant.description}</p>
                                         <button
+                                            className={`add-to-cart-btn${addedToCart[plant.name] ? ' added-to-cart' : ''}`}
                                             onClick={() => handleAddToCart(plant)}
-                                            className="product-button">
-                                            Add to Cart
+                                            disabled={!!addedToCart[plant.name]}
+                                        >
+                                            {addedToCart[plant.name] ? 'Added to Cart' : 'Add to Cart'}
                                         </button>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     ))}
-
-
                 </div>
             ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
@@ -378,5 +355,4 @@ function ProductList({ onHomeClick }) {
         </div>
     );
 }
-
 export default ProductList;
